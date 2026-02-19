@@ -13,6 +13,7 @@ def about(request):
     return render(request, 'website/about.html')
 
 def contact(request):
+    selected_course = request.GET.get('course')
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -23,6 +24,8 @@ def contact(request):
             message = (
                 f"🔔 *New student Inquiry!*\n\n"
                 f"*Name:* {contact_instance.name}\n"
+                f"*Phone:* {contact_instance.phone}\n"
+                f"*Email:* {contact_instance.email}\n"
                 f"*Subject:* {contact_instance.subject}\n"
                 f"*Message:* {contact_instance.message}"
             )
@@ -42,9 +45,12 @@ def contact(request):
 
             return render(request, 'website/contact.html', {'success': True})
     else:
-        form = ContactForm()
+        initial = {}
+        if selected_course:
+            initial["subject"] = f"Inquiry for {selected_course}"
+        form = ContactForm(initial=initial)
 
-    return render(request, 'website/contact.html', {'form' : form})
+    return render(request, 'website/contact.html', {'form' : form, 'selected_course': selected_course})
         
 
 def courses(request):

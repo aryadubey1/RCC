@@ -5,7 +5,7 @@
 
     {% block content %}
     <div class="contact-container">
-        <div class="conatct-header">
+        <div class="contact-header">
             <h1>Contact Us</h1>
             <p>Visit our center in Bhopal for a free counseling session.</p>
         </div>
@@ -13,11 +13,17 @@
         <div class="contact-grid">
             <div class="contact-form">
                 {% if success %}
-                    <p style='color-green;'>Thankyou! Your message has been sent successfully.</p>
+                    <p style="color: #22c55e;">Thank you! Your message has been sent successfully.</p>
                 {% else %}
+                {% if selected_course %}
+                    <p class="selected-course-note">
+                        Selected course: <strong>{{ selected_course }}</strong>
+                    </p>
+                {% endif %}
                 <form method="POST">
                     {% csrf_token %}
-                    {{ form.as_p }} <button type='submit'>Send Message</button>
+                    {{ form.as_p }}
+                    <button type="submit">Send Message</button>
                 </form>
                 {% endif %}
             </div>

@@ -4,4 +4,4 @@ from .models import ContactMessage
 class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactMessage
-        fields = ['name', 'email', 'subject', 'message',]
+        fields = ['name', 'phone', 'email', 'subject', 'message',]

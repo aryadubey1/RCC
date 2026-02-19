@@ -4,20 +4,36 @@
     {% endblock  %}
 
     {% block content %}
-        <h1>Our Available Courses</h1>
+        <section class="courses-hero">
+            <h1>Our Available Courses</h1>
+            <p class="courses-intro">
+                Well‑structured batches with clear concepts, doubt‑solving and regular tests for school and board exams.
+            </p>
+        </section>
 
-        <div class="courses_grid">
-            {% for course in courses %}
-                <div class="course_card">
-                    <h2>{{ course.title }}</h2>
-                    <p>{{ course.description }}</p>
-                    <p><strong>Teacher:</strong>{{ course.teacher_name }}</p>
-                    <p><strong>Price:₹</strong>:{{ course.price }}</p>
-                </div>
-            {% empty %}
-                <p>No courses are currently available. Check back soon!</p>
-            {% endfor %}
-        </div>
-
-            
+        <section class="courses-section">
+            <div class="courses-grid">
+                {% for course in courses %}
+                    <article class="course-card">
+                        <h2 class="course-title">{{ course.title }}</h2>
+                        <p class="course-description">{{ course.description }}</p>
+                        <div class="course-meta">
+                            <span class="course-teacher">
+                                <i class="fas fa-user"></i> {{ course.teacher_name }}
+                            </span>
+                            <span class="course-price">
+                                ₹ {{ course.price }}
+                            </span>
+                        </div>
+                        <div class="course-actions">
+                            <a class="btn-primary course-cta" href="{% url 'contact' %}?course={{ course.title|urlencode }}">
+                                Enquire Now
+                            </a>
+                        </div>
+                    </article>
+                {% empty %}
+                    <p class="no-courses">No courses are currently available. Check back soon!</p>
+                {% endfor %}
+            </div>
+        </section>
     {% endblock  %}
