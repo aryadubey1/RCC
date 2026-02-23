@@ -1,70 +1,78 @@
 {% extends "website/base.html" %}
 {% load static %}
 
-{% block title %}
-       About
-{% endblock  %}
+{% block title %}About — Rajak's Coaching Classes{% endblock %}
 
 {% block content %}
-    <div class="about-page">
-        <section class="about-hero">
-            <h1>About our Coaching Institute</h1>
-            <p>Empowering student in Bhopal since 2015</p>
-        </section>
+<div class="about-page">
 
-        <section class="gallery-section">
-            <h2>Life at Our Center</h2>
-            <div class="slider-container">
-                <div class="slide fade">
-                    <img src="{% static 'website/images/gallery1.png' %}" alt="Classroom">
-                    <div class="caption">Our Modern Classrooms</div>
-                </div>
+    <!-- Hero -->
+    <section class="about-hero reveal">
+        <h1>About Our Coaching Institute</h1>
+        <p>Empowering students in Bhopal since 2015</p>
+    </section>
 
-                <div class="slide fade">
-                    <img src="{% static 'website/images/gallery2.png' %}" alt="Students">
-                    <div class="caption">Focused Learning Sessions</div>
-                </div>
-
-                <div class="slide fade">
-                    <img src="{% static 'website/images/gallery3.png' %}" alt="Library">
-                    <div class="caption">Quiet Study Areas</div>
-                </div>
-
-                <div class="slide fade">
-                    <img src="{% static 'website/images/gallery4.png' %}" alt="Library">
-                    <div class="caption">Register now</div>
-                </div>
-
-                <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
-                <a class="next" onclick="moveSlide(1)">&#10095;</a>
+    <!-- Gallery Slider -->
+    <section class="gallery-section reveal">
+        <h2>Life at Our Center</h2>
+        <div class="slider-container" id="gallery-slider">
+            <div class="slide fade">
+                <img src="{% static 'website/images/gallery1.png' %}" alt="Modern Classroom">
+                <div class="caption">Our Modern Classrooms</div>
             </div>
-        </section>
 
-        <section class="about-mission">
-            <div class="mission-text">
-                <h2>Our Mission</h2>
-                <p>We believe every student has the potenttial to excel.Our goal is to provide personalized support that builds confidence and academic success.</p>
-
+            <div class="slide fade">
+                <img src="{% static 'website/images/gallery2.png' %}" alt="Students in focused learning session">
+                <div class="caption">Focused Learning Sessions</div>
             </div>
-        </section>
-        <section class="about-features">
-            <h2>Why Parents Trust Us</h2>
-            <div class="features-grid">
-                    <div class="feature-item">
-                    <h3>Expert Tutors</h3>
-                    <p>Qualified teachers with years of experience in their subjects.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>Small Classes</h3>
-                    <p>Ensuring every student gets the attention they deserve.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>Proven Results</h3>
-                    <p>95% of our students improve by at least two grade levels.</p>
-                </div>
-             </div>
-        </section>
 
-    </div>
+            <div class="slide fade">
+                <img src="{% static 'website/images/gallery3.png' %}" alt="Quiet study area">
+                <div class="caption">Quiet Study Areas</div>
+            </div>
 
-{% endblock  %}
+            <div class="slide fade">
+                <img src="{% static 'website/images/gallery4.png' %}" alt="Registration">
+                <div class="caption">Register Now</div>
+            </div>
+
+            <a class="prev" onclick="moveSlide(-1)" role="button" aria-label="Previous slide">&#10094;</a>
+            <a class="next" onclick="moveSlide(1)" role="button" aria-label="Next slide">&#10095;</a>
+        </div>
+        <!-- Slider Dots -->
+        <div class="slider-dots" id="slider-dots"></div>
+    </section>
+
+    <!-- Mission -->
+    <section class="about-mission reveal">
+        <div class="mission-text">
+            <h2>Our Mission</h2>
+            <p>We believe every student has the potential to excel. Our goal is to provide personalized support that
+                builds confidence and academic success.</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="about-features reveal">
+        <h2>Why Parents Trust Us</h2>
+        <div class="features-grid reveal-stagger">
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h3>Expert Tutors</h3>
+                <p>Qualified teachers with years of experience in their subjects.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                <h3>Small Classes</h3>
+                <p>Ensuring every student gets the attention they deserve.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Proven Results</h3>
+                <p>95% of our students improve by at least two grade levels.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}

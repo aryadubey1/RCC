@@ -1,59 +1,79 @@
 {% extends "website/base.html" %}
-    {% load static %}
-    {% block title %}
-        Home
-    {% endblock  %}
+{% load static %}
 
-    {% block content %}
-        <section class="hero">
-            <div class="hero-content">
-                <p class="hero-eyebrow">Personalised coaching in Bhopal</p>
-                <h1>Excellence in Coaching for a Brighter Future !!</h1>
-                <p class="hero-subtitle">
-                    Providing quality education and personalised guidance since 2015 – focused batches,
-                    regular tests and individual attention for every student.
-                </p>
-                <div class="hero-buttons">
-                    <a href="{% url 'courses' %}" class="btn-primary">Explore Courses</a>
-                    <a href="{% url 'contact' %}" class="btn-secondary">Inquire Now</a>
-                </div>
-            </div>
-        </section>
+{% block title %}Home — Rajak's Coaching Classes{% endblock %}
 
-        <section class="stats-bar">
-            <div class="stat-item">
-                <span class="stat-number">10+</span>
-                <span class="stat-label">Years Experience</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">500+</span>
-                <span class="stat-label">Students Taught</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">95%</span>
-                <span class="stat-label">Success Rate</span>
-            </div>
-        </section>   
+{% block content %}
 
-        <section class="testimonials">
-            <h2 class="section-title">What our Students Say</h2>
-            <div class="testimonial-grid">
-                {% for t in testimonials %}
-                    <article class="testimonial-card">
-                        <p class="quote">“{{ t.review_text }}”</p>
-                        <div class="student-info">
-                            <h4>{{ t.student_name }}</h4>
-                            <span>{{ t.course_taken }}</span>
-                        </div>
-                        <div class="stars">
-                            {% for i in '12345' %}
-                                <span class="star{% if forloop.counter > t.rating %} star-muted{% endif %}">★</span>
-                            {% endfor %}
-                        </div>
-                    </article>
+<!-- Hero Section -->
+<section class="hero">
+    <span class="hero-shape hero-shape-1"></span>
+    <span class="hero-shape hero-shape-2"></span>
+    <span class="hero-shape hero-shape-3"></span>
+
+    <div class="hero-content">
+        <p class="hero-eyebrow">Personalised coaching in Bhopal</p>
+        <h1>Excellence in Coaching for a Brighter Future !!</h1>
+        <p class="hero-subtitle">
+            Providing quality education and personalised guidance since 2015 – focused batches,
+            regular tests and individual attention for every student.
+        </p>
+        <div class="hero-buttons">
+            <a href="{% url 'courses' %}" class="btn-primary">
+                <i class="fas fa-book-open"></i> Explore Courses
+            </a>
+            <a href="{% url 'contact' %}" class="btn-secondary">
+                <i class="fas fa-paper-plane"></i> Inquire Now
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Bar -->
+<section class="stats-bar reveal reveal-stagger">
+    <div class="stat-item">
+        <span class="stat-icon"><i class="fas fa-award"></i></span>
+        <div class="stat-text">
+            <span class="stat-number" data-count="10">10+</span>
+            <span class="stat-label">Years Experience</span>
+        </div>
+    </div>
+    <div class="stat-item">
+        <span class="stat-icon"><i class="fas fa-user-graduate"></i></span>
+        <div class="stat-text">
+            <span class="stat-number" data-count="500">500+</span>
+            <span class="stat-label">Students Taught</span>
+        </div>
+    </div>
+    <div class="stat-item">
+        <span class="stat-icon"><i class="fas fa-chart-line"></i></span>
+        <div class="stat-text">
+            <span class="stat-number" data-count="95">95%</span>
+            <span class="stat-label">Success Rate</span>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials reveal">
+    <h2 class="section-title">What Our Students Say</h2>
+    <div class="testimonial-grid reveal-stagger">
+        {% for t in testimonials %}
+        <article class="testimonial-card">
+            <span class="quote-icon"><i class="fas fa-quote-left"></i></span>
+            <p class="quote">"{{ t.review_text }}"</p>
+            <div class="student-info">
+                <h4>{{ t.student_name }}</h4>
+                <span>{{ t.course_taken }}</span>
+            </div>
+            <div class="stars">
+                {% for i in '12345' %}
+                <span class="star{% if forloop.counter > t.rating %} star-muted{% endif %}">★</span>
                 {% endfor %}
             </div>
-        </section>
+        </article>
+        {% endfor %}
+    </div>
+</section>
 
-
-    {% endblock  %}
+{% endblock %}

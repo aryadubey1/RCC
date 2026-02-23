@@ -1,43 +1,74 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Rajak's Coaching Classes — Quality education and personalised guidance since 2015 in Bhopal. Expert tutors, small classes, proven results.">
+    <meta name="theme-color" content="#0b1120">
+    <meta property="og:title" content="{% block og_title %}Rajak's Coaching Classes{% endblock %}">
+    <meta property="og:description"
+        content="Personalised coaching in Bhopal since 2015. Expert tutors, small classes, proven results.">
+    <meta property="og:type" content="website">
     <title>{% block title %}Tuition Center{% endblock %}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <!-- Apply saved theme before paint to prevent flash -->
+    <script>
+        (function () {
+            var t = localStorage.getItem('rcc-theme');
+            if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        })();
+    </script>
 </head>
+
 <body>
 
+    <!-- Skip to content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
     <header>
-        <nav class="navbar">
+        <nav class="navbar" id="navbar">
             <div class="nav-container">
-                <a href="{% url 'home' %}" class="logo">
-                    <img src="{% static 'website/images/logo.png' %}" alt="Tuition Logo" height="50">
+                <a href="{% url 'home' %}" class="logo" aria-label="Rajak's Coaching Classes — Home">
+                    <img src="{% static 'website/images/logo.png' %}" alt="Rajak's Coaching Classes Logo" height="50">
                 </a>
-                <button class="nav-toggle" aria-label="Toggle navigation">
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
-                <ul class="nav-links">
+                <ul class="nav-links" id="nav-links">
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About Us</a></li>
                     <li><a href="{% url 'courses' %}">Courses</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+                    <i class="fas fa-moon theme-icon-dark"></i>
+                    <i class="fas fa-sun theme-icon-light"></i>
+                </button>
             </div>
         </nav>
+        <!-- Mobile overlay -->
+        <div class="nav-overlay" id="nav-overlay"></div>
     </header>
 
-    <main class="container">
+    <main class="container" id="main-content">
         {% block content %}
         {% endblock %}
     </main>
 
-   <footer>
+    <footer>
         <div class="footer-container-grid">
             <div class="footer-section">
                 <h3 class="footer-title">Rajak's Coaching Classes</h3>
@@ -50,6 +81,7 @@
                 <h4>Quick Links</h4>
                 <ul class="footer-links-list">
                     <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
                     <li><a href="{% url 'courses' %}">Our Courses</a></li>
                     <li><a href="{% url 'contact' %}">Contact Us</a></li>
                 </ul>
@@ -58,19 +90,27 @@
             <div class="footer-section">
                 <h4>Follow Us</h4>
                 <div class="social-icons">
-                    <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/rajakakash" class="social-icon instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@akashrajak7758" class="social-icon youtube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/rajakakash" class="social-icon instagram" target="_blank"
+                        rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@akashrajak7758" class="social-icon youtube" target="_blank"
+                        rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
                 <p class="social-tagline">Stay updated with class schedules.</p>
             </div>
         </div>
-    
+
         <div class="footer-bottom">
-        <p>&copy; 2026 Rajak's Coaching Classes Bhopal. All Rights Reserved.</p>
+            <p>&copy; 2026 Rajak's Coaching Classes Bhopal. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script src="{% static 'website/js/script.js' %}"></script>
 </body>
+
 </html>

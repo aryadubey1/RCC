@@ -1,47 +1,47 @@
 {% extends "website/base.html" %}
-    {% block title %}
-        Contact
-    {% endblock  %}
+{% load static %}
 
-    {% block content %}
-    <div class="contact-container">
-        <div class="contact-header">
-            <h1>Contact Us</h1>
-            <p>Visit our center in Bhopal for a free counseling session.</p>
-        </div>
+{% block title %}Contact — Rajak's Coaching Classes{% endblock %}
 
-        <div class="contact-grid">
-            <div class="contact-form">
-                {% if success %}
-                    <p style="color: #22c55e;">Thank you! Your message has been sent successfully.</p>
-                {% else %}
-                {% if selected_course %}
-                    <p class="selected-course-note">
-                        Selected course: <strong>{{ selected_course }}</strong>
-                    </p>
-                {% endif %}
-                <form method="POST">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Send Message</button>
-                </form>
-                {% endif %}
-            </div>
+{% block content %}
 
-            <div class="contact-map">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14664.746493409235!2d77.4866886!3d23.236295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c41dd12a27f1d%3A0x63dc63174145e562!2sRajak&#39;s%20Coaching%20Classes!5e0!3m2!1sen!2sin!4v1769145904725!5m2!1sen!2sin" 
-                    width="100%" 
-                    height="450" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
+<div class="contact-container">
+    <div class="contact-header reveal">
+        <h1>Contact Us</h1>
+        <p>Visit our center in Bhopal for a free counselling session.</p>
     </div>
 
-    {% endblock  %}
+    <div class="contact-grid reveal">
+        <div class="contact-form">
+            {% if success %}
+            <p style="color: var(--accent-green); text-align: center; padding: 20px 0;">
+                <i class="fas fa-check-circle" style="font-size: 1.5rem; display: block; margin-bottom: 10px;"></i>
+                Thank you! Your message has been sent successfully.
+            </p>
+            {% else %}
+            {% if selected_course %}
+            <p class="selected-course-note">
+                <i class="fas fa-book"></i> Selected course: <strong>{{ selected_course }}</strong>
+            </p>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+            {% endif %}
+        </div>
 
+        <div class="contact-map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14664.746493409235!2d77.4866886!3d23.236295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c41dd12a27f1d%3A0x63dc63174145e562!2sRajak&#39;s%20Coaching%20Classes!5e0!3m2!1sen!2sin!4v1769145904725!5m2!1sen!2sin"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                title="Rajak's Coaching Classes Location">
+            </iframe>
+        </div>
+    </div>
+</div>
 
-  
+{% endblock %}

@@ -1,39 +1,44 @@
 {% extends "website/base.html" %}
-    {% block title %}
-        Courses
-    {% endblock  %}
+{% load static %}
 
-    {% block content %}
-        <section class="courses-hero">
-            <h1>Our Available Courses</h1>
-            <p class="courses-intro">
-                Well‑structured batches with clear concepts, doubt‑solving and regular tests for school and board exams.
-            </p>
-        </section>
+{% block title %}Courses — Rajak's Coaching Classes{% endblock %}
 
-        <section class="courses-section">
-            <div class="courses-grid">
-                {% for course in courses %}
-                    <article class="course-card">
-                        <h2 class="course-title">{{ course.title }}</h2>
-                        <p class="course-description">{{ course.description }}</p>
-                        <div class="course-meta">
-                            <span class="course-teacher">
-                                <i class="fas fa-user"></i> {{ course.teacher_name }}
-                            </span>
-                            <span class="course-price">
-                                ₹ {{ course.price }}
-                            </span>
-                        </div>
-                        <div class="course-actions">
-                            <a class="btn-primary course-cta" href="{% url 'contact' %}?course={{ course.title|urlencode }}">
-                                Enquire Now
-                            </a>
-                        </div>
-                    </article>
-                {% empty %}
-                    <p class="no-courses">No courses are currently available. Check back soon!</p>
-                {% endfor %}
+{% block content %}
+
+<section class="courses-hero reveal">
+    <h1>Our Available Courses</h1>
+    <p class="courses-intro">
+        Well‑structured batches with clear concepts, doubt‑solving and regular tests for school and board exams.
+    </p>
+</section>
+
+<section class="courses-section reveal">
+    <div class="courses-grid reveal-stagger">
+        {% for course in courses %}
+        <article class="course-card">
+            <div class="course-card-body">
+                <div class="course-icon"><i class="fas fa-book-reader"></i></div>
+                <h2 class="course-title">{{ course.title }}</h2>
+                <p class="course-description">{{ course.description }}</p>
+                <div class="course-meta">
+                    <span class="course-teacher">
+                        <i class="fas fa-user"></i> {{ course.teacher_name }}
+                    </span>
+                    <span class="course-price">
+                        ₹ {{ course.price }}
+                    </span>
+                </div>
+                <div class="course-actions">
+                    <a class="btn-primary course-cta" href="{% url 'contact' %}?course={{ course.title|urlencode }}">
+                        <i class="fas fa-paper-plane"></i> Enquire Now
+                    </a>
+                </div>
             </div>
-        </section>
-    {% endblock  %}
+        </article>
+        {% empty %}
+        <p class="no-courses">No courses are currently available. Check back soon!</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
