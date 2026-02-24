@@ -44,18 +44,20 @@
                 <a href="{% url 'home' %}" class="logo" aria-label="Rajak's Coaching Classes — Home">
                     <img src="{% static 'website/images/logo.png' %}" alt="Rajak's Coaching Classes Logo" height="50">
                 </a>
-                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
-                </button>
                 <ul class="nav-links" id="nav-links">
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About Us</a></li>
                     <li><a href="{% url 'courses' %}">Courses</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+                        <i class="fas fa-moon theme-icon-dark"></i>
+                        <i class="fas fa-sun theme-icon-light"></i>
+                        </button>
+                    </li>
                 </ul>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
-                    <i class="fas fa-moon theme-icon-dark"></i>
-                    <i class="fas fa-sun theme-icon-light"></i>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </nav>
